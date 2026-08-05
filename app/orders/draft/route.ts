@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createSupabaseAdminClient } from "../../../../lib/supabase/admin";
+import { createSupabaseAdminClient } from "../../../lib/supabase/admin";
 import {
   CommerceConfigurationError,
   getCommerceServerConfig,
-} from "../../../../lib/server/config";
-import { parseDraftCheckoutRequest } from "../../../../lib/server/checkout-input";
-import { buildDraftOrder } from "../../../../lib/server/order-draft";
+} from "../../../lib/server/config";
+import { parseDraftCheckoutRequest } from "../../../lib/server/checkout-input";
+import { buildDraftOrder } from "../../../lib/server/order-draft";
 
 export const runtime = "nodejs";
 
