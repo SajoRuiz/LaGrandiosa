@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { createSupabaseAdminClient } from "../../../../lib/supabase/admin";
+import { createSupabaseAdminClient } from "../../../lib/supabase/admin";
 import {
   CommerceConfigurationError,
   getCommerceServerConfig,
-} from "../../../../lib/server/config";
+} from "../../../lib/server/config";
 
 export const runtime = "nodejs";
 
