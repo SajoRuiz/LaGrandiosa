@@ -1,3 +1,7 @@
+-- La Grandiosa Commerce — Stage 3A
+-- Secure order records, client information, status history, audit log,
+-- and notification outbox.
+
 create extension if not exists pgcrypto;
 
 -- ------------------------------------------------------------------
