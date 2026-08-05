@@ -30,23 +30,18 @@ export function getCommerceServerConfig(): CommerceServerConfig {
   return {
     appBaseUrl:
       process.env.APP_BASE_URL?.trim() || "http://localhost:3000",
-
     supabaseUrl: requireServerEnvironment(
       "NEXT_PUBLIC_SUPABASE_URL",
     ),
-
     supabaseServiceRoleKey: requireServerEnvironment(
       "SUPABASE_SERVICE_ROLE_KEY",
     ),
-
     internalProcessingEmail: requireServerEnvironment(
       "INTERNAL_PROCESSING_EMAIL",
     ),
-
     salesReplyToEmail: requireServerEnvironment(
       "SALES_REPLY_TO_EMAIL",
     ),
-
     transactionalFromEmail: requireServerEnvironment(
       "TRANSACTIONAL_FROM_EMAIL",
     ),

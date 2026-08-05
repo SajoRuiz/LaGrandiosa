@@ -34,7 +34,8 @@
 .addLink,
 .primaryButton,
 .secondaryButton,
-.disabledButton {
+.disabledButton,
+.checkoutButton {
   display: inline-flex;
   min-height: 50px;
   align-items: center;
@@ -48,7 +49,8 @@
 
 .addLink,
 .primaryButton,
-.disabledButton {
+.disabledButton,
+.checkoutButton {
   color: var(--deep);
   background: var(--orange);
 }
@@ -389,4 +391,12 @@
 
 .holidayList li + li {
   margin-top: 7px;
+}
+
+
+.checkoutButton {
+  width: 100%;
+  color: var(--deep);
+  background: var(--orange);
+  border: 0;
 }

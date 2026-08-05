@@ -357,22 +357,15 @@ export default function CartClient() {
         </div>
 
         <p className={styles.notice}>
-          Every valid date range is accepted. Exact 30–31, 60–61, 90–91 day
-          ranges—and onward multipliers—qualify as full monthly purchases.
-          Complete calendar months, including February, also qualify. Longer
-          non-exact ranges are divided into full monthly units plus a prorated
-          partial remainder. The 10% exact-date premium applies only to that
-          partial remainder. Closed holidays are subtracted without activating
-          the premium. An exact purchase of two or more monthly units receives
-          the 10% multi-month discount after holiday deductions. Taxes,
-          availability holds, customer identity, legal terms, credit-card
-          payment, and customer-code payment will be connected in the next
-          production stage.
+          Continue to the mandatory client-information form. The server will
+          recalculate every line from the approved product catalog and create a
+          secure Stage 3A order record. Contract acceptance and payment choices
+          follow in Stage 3B.
         </p>
 
-        <button className={styles.disabledButton} type="button" disabled>
-          Continue to payment · coming next
-        </button>
+        <Link className={styles.checkoutButton} href="/checkout/client">
+          Continue to client information
+        </Link>
       </aside>
     </section>
   );
