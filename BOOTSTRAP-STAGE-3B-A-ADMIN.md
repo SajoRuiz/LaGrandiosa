@@ -70,3 +70,4 @@ The internal administrator can:
 The activation code does not contain the discount or credit limit. It is a
 high-entropy one-time code that links the invited user to the server-side
 agency account where those negotiated values are stored.
+
