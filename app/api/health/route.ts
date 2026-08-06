@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { createSupabaseAdminClient } from "../../../../lib/supabase/admin";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import {
   CommerceConfigurationError,
   getCommerceServerConfig,
-} from "../../../../lib/server/config";
+} from "@/lib/server/config";
 
 export const runtime = "nodejs";
 
@@ -12,19 +12,24 @@ export async function GET() {
     const config = getCommerceServerConfig();
     const supabase = createSupabaseAdminClient();
 
-    const { error } = await supabase
-      .from("orders")
-      .select("id")
-      .limit(1);
+    const tableChecks = await Promise.all([
+      supabase.from("orders").select("id").limit(1),
+      supabase.from("agency_accounts").select("id").limit(1),
+      supabase.from("user_profiles").select("user_id").limit(1),
+      supabase.from("agency_invites").select("id").limit(1),
+    ]);
 
-    if (error) {
+    const failed = tableChecks.find((result) => result.error);
+
+    if (failed?.error) {
       return NextResponse.json(
         {
           ok: false,
-          stage: "3A",
+          stage: "3B-A",
           database: "unavailable",
           message:
-            "Supabase is reachable, but the Stage 3A migration may not be installed.",
+            "Supabase is reachable, but the Stage 3B-A agency-auth migration may not be installed.",
+          detail: failed.error.message,
         },
         { status: 503 },
       );
@@ -32,8 +37,9 @@ export async function GET() {
 
     return NextResponse.json({
       ok: true,
-      stage: "3A",
+      stage: "3B-A",
       database: "ready",
+      authentication: "invite-only email/password + TOTP MFA",
       internalProcessingEmail: config.internalProcessingEmail,
       salesReplyToEmail: config.salesReplyToEmail,
       transactionalFromEmail: config.transactionalFromEmail,
@@ -42,7 +48,7 @@ export async function GET() {
     return NextResponse.json(
       {
         ok: false,
-        stage: "3A",
+        stage: "3B-A",
         database: "not_configured",
         message:
           error instanceof CommerceConfigurationError

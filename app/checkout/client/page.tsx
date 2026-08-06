@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { requireAgencyPurchaseAccess } from "@/lib/auth/access";
 import ClientInformationForm from "./ClientInformationForm";
 import styles from "./client.module.css";
 
@@ -9,7 +10,9 @@ export const metadata: Metadata = {
     "Provide the mandatory client information for a La Grandiosa advertising contract.",
 };
 
-export default function ClientInformationPage() {
+export default async function ClientInformationPage() {
+  const access = await requireAgencyPurchaseAccess("/checkout/client");
+
   return (
     <main className={styles.page}>
       <header className={styles.header}>
@@ -30,8 +33,9 @@ export default function ClientInformationPage() {
         <p className={styles.eyebrow}>CLIENT INFORMATION</p>
         <h1>Tell us who is placing the order.</h1>
         <p>
-          The following contact and billing information is required before the
-          contract and payment stage.
+          This order will be connected to {access.agency.display_name} and the
+          authenticated purchaser {access.profile.full_name}. Enter the contact
+          and billing information that should appear in the contract snapshot.
         </p>
       </section>
 

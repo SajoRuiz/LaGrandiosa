@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { requireAgencyPurchaseAccess } from "@/lib/auth/access";
 import styles from "./received.module.css";
 
 type ReceivedSearchParams = Promise<{
@@ -14,6 +15,7 @@ export default async function ClientInformationReceivedPage({
 }: {
   searchParams: ReceivedSearchParams;
 }) {
+  const access = await requireAgencyPurchaseAccess("/checkout/received");
   const params = await searchParams;
   const orderNumber = firstValue(params.order);
 
@@ -31,7 +33,7 @@ export default async function ClientInformationReceivedPage({
 
       <section className={styles.card}>
         <p className={styles.eyebrow}>CLIENT INFORMATION RECEIVED</p>
-        <h1>Your order record has been created.</h1>
+        <h1>Your authenticated order record has been created.</h1>
 
         {orderNumber ? (
           <p className={styles.orderNumber}>
@@ -40,20 +42,21 @@ export default async function ClientInformationReceivedPage({
         ) : null}
 
         <p>
-          Your client information and contract selections are now stored in the
-          secure order system. The contract-acceptance and payment choices—
-          credit card, ACH, and Client Code—are the next production stage.
+          The order is linked to {access.agency.display_name} and purchaser
+          {" "}
+          {access.profile.full_name}. The purchase-order, negotiated discount,
+          credit validation, and invoicing workflow are the next release.
         </p>
 
         <aside className={styles.notice}>
-          The notification outbox now contains the customer receipt and the
-          internal processing alert for processing@lagrandiosapr.com. Actual
-          delivery through email and SMS will be activated in Stage 3B.
+          Notification records are queued for the customer and
+          processing@lagrandiosapr.com. Actual email and SMS delivery is added
+          after the PO and invoice workflow is approved.
         </aside>
 
         <div className={styles.actions}>
-          <Link className={styles.primaryButton} href="/">
-            Return to website
+          <Link className={styles.primaryButton} href="/portal">
+            Return to agency portal
           </Link>
           <Link className={styles.secondaryButton} href="/order">
             Start another order
