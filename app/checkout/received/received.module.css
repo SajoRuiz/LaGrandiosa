@@ -1,0 +1,79 @@
+.page {
+  min-height: 100vh;
+  padding: 32px clamp(20px, 5vw, 72px);
+  background: #f7f1e8;
+  color: #26160f;
+}
+
+.header {
+  margin-bottom: 56px;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+.card {
+  max-width: 780px;
+  margin: 0 auto;
+  border: 1px solid rgba(122, 47, 23, 0.18);
+  border-radius: 30px;
+  padding: clamp(24px, 5vw, 44px);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 24px 80px rgba(38, 22, 15, 0.08);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #a5451d;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.card h1 {
+  margin: 0 0 18px;
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1;
+}
+
+.card p {
+  color: #5c4638;
+  line-height: 1.7;
+}
+
+.orderNumber,
+.notice {
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: #fff7ec;
+}
+
+.notice {
+  margin: 24px 0;
+  color: #6a432f;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.primaryButton,
+.secondaryButton {
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.primaryButton {
+  background: #8f351a;
+  color: white;
+}
+
+.secondaryButton {
+  color: #7a2f17;
+}

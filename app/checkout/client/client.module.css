@@ -1,0 +1,141 @@
+.page {
+  min-height: 100vh;
+  padding: 32px clamp(20px, 5vw, 72px);
+  background: #f7f1e8;
+  color: #26160f;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+.backLink {
+  color: #7a2f17;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.intro,
+.form {
+  max-width: 960px;
+  margin: 0 auto 32px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #a5451d;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.intro h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2.2rem, 6vw, 4.6rem);
+  line-height: 0.98;
+}
+
+.intro p {
+  max-width: 760px;
+  color: #5c4638;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.form {
+  display: grid;
+  gap: 18px;
+  border: 1px solid rgba(122, 47, 23, 0.18);
+  border-radius: 28px;
+  padding: clamp(20px, 4vw, 36px);
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 24px 80px rgba(38, 22, 15, 0.08);
+}
+
+.field,
+.checkbox {
+  display: grid;
+  gap: 8px;
+  color: #4d3427;
+  font-weight: 700;
+}
+
+.field input {
+  width: 100%;
+  border: 1px solid rgba(122, 47, 23, 0.24);
+  border-radius: 14px;
+  padding: 12px 14px;
+  background: #fffaf3;
+  color: #26160f;
+  font: inherit;
+}
+
+.fieldGridTwo,
+.fieldGridThree {
+  display: grid;
+  gap: 16px;
+}
+
+.fieldGridTwo {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fieldGridThree {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cartNotice,
+.error {
+  margin: 0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 700;
+}
+
+.cartNotice {
+  background: #fff7ec;
+  color: #6a432f;
+}
+
+.error {
+  background: #fff0ec;
+  color: #9f2f16;
+}
+
+.primaryButton {
+  width: fit-content;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 20px;
+  background: #8f351a;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+}
+
+.primaryButton:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+@media (max-width: 760px) {
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .fieldGridTwo,
+  .fieldGridThree {
+    grid-template-columns: 1fr;
+  }
+}
